@@ -1,15 +1,15 @@
 const gulp = require('gulp');
-var browserify = require('browserify');
-var babelify = require('babelify');
-var source = require('vinyl-source-stream');
-var del = require('del');
+const browserify = require('browserify');
+const babelify = require('babelify');
+const source = require('vinyl-source-stream');
+const del = require('del');
 
 
 gulp.task('clean', () => {
 	del.sync("dist");
 });
 
-gulp.task('build', ['html', 'css', 'js']);
+gulp.task('build', ['libs', 'html', 'css', 'js']);
 
 gulp.task('js', () => {
 	return browserify('src/pages/index.js')
@@ -27,4 +27,9 @@ gulp.task('html', () => {
 gulp.task('css', () => {
     return gulp.src('src/pages/*.css')
         .pipe(gulp.dest('dist'));
+});
+
+gulp.task('libs', () => {
+    return gulp.src('libs/*')
+        .pipe(gulp.dest('dist/libs'));
 });
