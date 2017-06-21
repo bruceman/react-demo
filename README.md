@@ -1,3 +1,5 @@
+#react demo project (browserify,gulp,babel)
+
 ### install dependencies
 > npm install
 
